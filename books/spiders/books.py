@@ -17,4 +17,4 @@ class BooksSpider(scrapy.Spider):
 	    itemList.append(item)
 	response = {}
 	response["providers"] = itemList
-        yield response
+        response
