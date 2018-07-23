@@ -15,4 +15,6 @@ class BooksSpider(scrapy.Spider):
 	    item = {}
 	    item["ref"] = anchor.css('::attr(href)').extract_first()
 	    itemList.append(item)
-        yield itemList
+	response = {}
+	response["providers"] = itemList
+        yield response
