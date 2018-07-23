@@ -12,12 +12,11 @@ class BooksSpider(scrapy.Spider):
     def parse(self, response):
         line = 0
         lineResponse = {}
-        for provider_url in response.css("p a").extract():
+        for provider_url in response.css("p a attr(::href)").extract():
             line = line + 1
         
             item = {}
-            item["text"] = provider_url.css(" ::text").extract_first()
-            item["href"] = provider_url.css(" ::href").extract_first()
+            item["href"] = provider_url
 
             yield item
 			
