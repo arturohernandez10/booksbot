@@ -10,22 +10,22 @@ class BooksSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-		line = 0
-		lineResponse = {}
+	line = 0
+	lineResponse = {}
         for provider_url in response.css("p a").extract():
-			line = line + 1
+		line = line + 1
 		
-			item = {}
-			item["text"] = provider_url.css(" ::text").extract_first()
-			item["href"] = provider_url.css(" ::href").extract_first()
+		item = {}
+		item["text"] = provider_url.css(" ::text").extract_first()
+		item["href"] = provider_url.css(" ::href").extract_first()
 			
 			
-			yield item
+		yield item
 			
-			if item["href"] == "https://www.i2290.com/index.aspx":
-				lineResponse["result"] = line
+		if item["href"] == "https://www.i2290.com/index.aspx":
+			lineResponse["result"] = line
 				
-		yield lineResponse
+	yield lineResponse
 	
 	
 	
