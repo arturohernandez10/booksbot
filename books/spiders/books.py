@@ -10,11 +10,7 @@ class BooksSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-	itemList = []
         for anchor in response.css("p > a"):
 	    item = {}
 	    item["ref"] = anchor.css('::attr(href)').extract_first()
-	    itemList.append(item)
-	response = {}
-	response["providers"] = itemList
-        response
+	    yield item
