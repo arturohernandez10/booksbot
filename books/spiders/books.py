@@ -15,7 +15,7 @@ class BooksSpider(scrapy.Spider):
         for provider_url in response.css("p a").extract():
             line = line + 1
         
-        item = {}
+            item = {}
             item["text"] = provider_url.css(" ::text").extract_first()
             item["href"] = provider_url.css(" ::href").extract_first()
 
